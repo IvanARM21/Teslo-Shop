@@ -1,8 +1,7 @@
 export const revalidate = 604800;
 
 import { getProductBySlug } from "@/actions";
-import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector, StockLabel } from "@/components";
-import { titleFont } from "@/config/fonts";
+import { ProductMobileSlideshow, ProductSlideshow, StockLabel } from "@/components";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { AddToCart } from "./ui/AddToCart";
@@ -33,7 +32,7 @@ export async function generateMetadata(
     openGraph: {
       title: product?.title ?? 'Producto no encontrado', 
       description: product?.description ?? 'Producto no encontrado',
-      images: [`/products/${product?.images[1]}`],
+      images: [`${process.env.APP_URL}/products/${product?.images[1]}`],
     },
   }
 }
@@ -43,8 +42,6 @@ export default async function ProductBySlugPage({params} : Props) {
 
   const { slug } = params;
   const product = await getProductBySlug(slug);
-
-  console.log(product);
 
   if(!product) {
     notFound();
