@@ -1,7 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .env
+<<<<<<< HEAD
 /postgres/
+=======
+/postres/
+>>>>>>> 5d59ca4699ddd49c440cd649abd29d97d0c6b0c9
 
 # dependencies
 /node_modules
